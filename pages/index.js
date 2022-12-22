@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Header from '../components/Header';
+import Hero from '../components/Hero';
 
 export default function Home() {
   return (
@@ -18,7 +19,11 @@ export default function Home() {
       {/* TODO: Header*/}
       <Header />
       {/* TODO: Hero*/}
+      <section id='hero'>
+        <Hero />
+      </section>
       {/* TODO: About*/}
+      <section id='about'></section>
       {/* TODO: Experience*/}
       {/* TODO: Skills*/}
       {/* TODO: Projects*/}

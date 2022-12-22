@@ -2,7 +2,7 @@ import { SocialIcon } from 'react-social-icons';
 import { motion } from 'framer-motion';
 function Header() {
   return (
-    <header className='sticky flex flex-row justify-between max-w-7xl'>
+    <header className='sticky flex flex-row justify-between max-w-7xl p-4'>
       <motion.div
         initial={{
           x: -500,
@@ -44,7 +44,22 @@ function Header() {
           bgColor='transparent'
         />
       </motion.div>
-      <div>
+      <motion.div
+        initial={{
+          x: 500,
+          opacity: 0,
+          scale: 0.5
+        }}
+        animate={{
+          x: 0,
+          opacity: 1,
+          scale: 1
+        }}
+        transition={{
+          duration: 1,
+          delay: 1
+        }}
+        className='cursor-pointer'>
         <SocialIcon
           network='email'
           url='mailto:coder.mariusz@gmail.com'
@@ -54,7 +69,7 @@ function Header() {
         <p className='uppercase hidden text-gray-500 font-bold text-sm md:inline-flex sm:'>
           GET IN TOUCH
         </p>
-      </div>
+      </motion.div>
     </header>
   );
 }
