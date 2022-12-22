@@ -1,8 +1,9 @@
 import { SocialIcon } from 'react-social-icons';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 function Header() {
   return (
-    <header className='sticky flex flex-row justify-between max-w-7xl p-4'>
+    <header className='sticky top-0 flex flex-row justify-between mx-auto max-w-7xl p-4'>
       <motion.div
         initial={{
           x: -500,
@@ -66,9 +67,11 @@ function Header() {
           fgColor='gray'
           bgColor='transparent'
         />
-        <p className='uppercase hidden text-gray-500 font-bold text-sm md:inline-flex sm:'>
-          GET IN TOUCH
-        </p>
+        <Link href='mailto:coder.mriusz@gmail.com'>
+          <p className='uppercase hidden text-gray-500 font-bold text-sm md:inline-flex sm:'>
+            GET IN TOUCH
+          </p>
+        </Link>
       </motion.div>
     </header>
   );
