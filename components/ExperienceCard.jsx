@@ -3,13 +3,13 @@ import React from 'react';
 
 function ExperienceCard() {
   return (
-    <article>
-      <div className='flex flex-col justify-center items-center'>
+    <article className='flex flex-col rounded-lg items-center snap-center w-full justify-center space-y-7 flex-shrink-0 p-5 h-[400px] md:h-[100%] lg:h-[130%] bg-zinc-800 opacity-60 hover:opacity-100 transition-opacity duration-300 mt-24'>
+      <div className='flex flex-col items-center'>
         <Image
           src='/squareLogo.png'
           alt='coders'
-          width={50}
-          height={50}
+          width={30}
+          height={30}
           className='rounded-full flex mx-auto object-cover'
         />
         <h3 className='text-xl font-semibold'>J. Full-Stack Developer</h3>

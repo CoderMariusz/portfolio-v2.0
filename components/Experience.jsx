@@ -4,7 +4,7 @@ function Experience() {
   return (
     <motion.div className='h-screen flex relative flex-col text-left md:flex-row max-w-full px-10 justify-evenly mx-auto items-center'>
       <h1 className='sectionTitleClass'>Experience</h1>
-      <div>
+      <div className='flex flex-row w-full space-x-10 p-2 overflow-x-scroll  snap-x snap-mandatory'>
         <ExperienceCard />
         <ExperienceCard />
         <ExperienceCard />
