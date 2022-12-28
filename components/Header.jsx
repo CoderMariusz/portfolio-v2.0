@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 function Header() {
   return (
-    <header className='sticky top-0 flex flex-row justify-between mx-auto max-w-7xl p-4'>
+    <header className='sticky top-0 flex flex-row justify-between mx-auto max-w-7xl p-4 z-20 bg-zinc-900'>
       <motion.div
         initial={{
           x: -500,

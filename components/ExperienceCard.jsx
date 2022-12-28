@@ -3,7 +3,7 @@ import React from 'react';
 
 function ExperienceCard() {
   return (
-    <article className='flex flex-col rounded-lg items-center snap-center w-full justify-center space-y-7 flex-shrink-0 p-5 h-[400px] md:h-[100%] lg:h-[130%] bg-zinc-800 opacity-60 hover:opacity-100 transition-opacity duration-300 mt-24'>
+    <article className='flex flex-col rounded-lg items-center snap-center w-full justify-center space-y-7 flex-shrink-0 p-5 max-w-5xl h-[400px] md:h-[100%] lg:h-[130%] bg-zinc-800 opacity-40 hover:opacity-100 transition-opacity duration-300 mt-24'>
       <div className='flex flex-col items-center'>
         <Image
           src='/squareLogo.png'
@@ -15,28 +15,29 @@ function ExperienceCard() {
         <h3 className='text-xl font-semibold'>J. Full-Stack Developer</h3>
       </div>
       <div>
-        <h4>Coders Clan</h4>
-        <div className='flex space-x-2 my-2'>
+        <h3>Coders Clan</h3>
+        <p className='uppercase text-gray-400'>Universe Of Code</p>
+        <div className='flex space-x-2 my-2 h-8 '>
           <Image
             src='/html5.png'
-            width={40}
-            height={40}
+            width={35}
+            height={30}
             alt='htlm5'
           />
           <Image
-            src='/html5.png'
-            width={40}
-            height={40}
+            src='/react.png'
+            width={35}
+            height={30}
             alt='htlm5'
           />
           <Image
-            src='/html5.png'
-            width={40}
-            height={40}
+            src='/git.png'
+            width={35}
+            height={30}
             alt='htlm5'
           />
         </div>
-        <p className='uppercase text-gray-400'></p>
+
         <p>
           started at work in 2022. that what i want to give people. good place
           to learn about programming.
