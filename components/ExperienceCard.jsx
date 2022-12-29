@@ -3,7 +3,7 @@ import React from 'react';
 
 function ExperienceCard() {
   return (
-    <article className='flex flex-col rounded-lg items-center snap-center w-full justify-center space-y-7 flex-shrink-0 p-5 max-w-5xl h-[400px] md:h-[100%] lg:h-[130%] bg-zinc-800 opacity-40 hover:opacity-100 transition-opacity duration-300 mt-24'>
+    <article className='flex flex-col rounded-lg items-center snap-center w-full justify-center space-y-7 flex-shrink-0 p-5 max-w-2xl h-[400px] md:h-[100%] lg:h-[130%] bg-zinc-800 opacity-40 hover:opacity-100 transition-opacity duration-300 mt-24'>
       <div className='flex flex-col items-center'>
         <Image
           src='/squareLogo.png'

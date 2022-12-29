@@ -15,7 +15,9 @@ function Hero() {
     delaySpeed: 2000
   });
   return (
-    <div className='h-screen flex flex-col space-y-8 justify-center text-center overflow-hidden'>
+    <div
+      id='top'
+      className='h-screen flex flex-col space-y-8 justify-center text-center overflow-hidden pt-20'>
       <BackGroundCircle />
       <div className='pt-1 z-10'>
         <Image
