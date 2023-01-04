@@ -1,7 +1,9 @@
 import { SocialIcon } from 'react-social-icons';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-function Header() {
+
+function Header({ socials, email, socialRef }) {
+  const sendEmail = `mailto:${email}`;
   return (
     <header className='sticky top-0 flex flex-row justify-between mx-auto max-w-7xl p-4 z-20'>
       <motion.div
@@ -19,31 +21,22 @@ function Header() {
           duration: 1.5
         }}
         className='flex flex-row items-center'>
-        <SocialIcon
-          url='https://www.facebook.com/'
-          fgColor='gray'
-          bgColor='transparent'
-        />
-        <SocialIcon
-          url='https://www.instagram.com/'
-          fgColor='gray'
-          bgColor='transparent'
-        />
-        <SocialIcon
-          url='https://www.linkedin.com/'
-          fgColor='gray'
-          bgColor='transparent'
-        />
-        <SocialIcon
-          url='https://www.twitter.com/'
-          fgColor='gray'
-          bgColor='transparent'
-        />
-        <SocialIcon
-          url='https://www.youtube.com/'
-          fgColor='gray'
-          bgColor='transparent'
-        />
+        {socials?.map((social) =>
+          socialRef.map((e) => {
+            if (e.id === social._ref) {
+              console.log(e);
+              return (
+                <SocialIcon
+                  key={e.rev}
+                  url={e.url}
+                  name={e.name}
+                  fgColor='gray'
+                  bgColor='transparent'
+                />
+              );
+            }
+          })
+        )}
       </motion.div>
       <motion.div
         initial={{
@@ -63,11 +56,11 @@ function Header() {
         className='cursor-pointer'>
         <SocialIcon
           network='email'
-          url='mailto:coder.mariusz@gmail.com'
+          url={sendEmail}
           fgColor='gray'
           bgColor='transparent'
         />
-        <Link href='mailto:coder.mriusz@gmail.com'>
+        <Link href={sendEmail}>
           <p className='uppercase hidden text-gray-500 font-bold text-sm md:inline-flex sm:'>
             GET IN TOUCH
           </p>

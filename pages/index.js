@@ -1,3 +1,4 @@
+import { PreviewSuspense } from 'next-sanity/preview';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -8,8 +9,42 @@ import Header from '../components/Header';
 import Hero from '../components/Hero';
 import Projects from '../components/Projects';
 import Skills from '../components/Skills';
+import { client } from '../lib/sanity.client';
+import groq from 'groq';
 
-export default function Home() {
+export const pageInfoQuery = groq`  *[_type == 'pageInfo']{
+...,
+}`;
+export const socialQuery = groq`  *[_type == 'social']{
+...,
+}`;
+
+export const getStaticProps = async ({ preview = false }) => {
+  if (preview) {
+    return { props: { preview } };
+  }
+
+  const pageInfo = await client.fetch(pageInfoQuery);
+  const socialRef = await client.fetch(socialQuery);
+
+  return { props: { preview, pageInfo, socialRef } };
+};
+
+export default function Home({ preview, pageInfo, socialRef }) {
+  if (preview) {
+    return <div>Preview Mode</div>;
+  }
+  console.log(socialRef);
+  const {
+    email,
+    address,
+    name,
+    profileImage,
+    role,
+    heroImage,
+    phone,
+    socials
+  } = pageInfo[0];
   return (
     <div className='h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbar scrollbar-track-zinc-700/40 scrollbar-thumb-yellow-700/80 '>
       <Head>
@@ -24,7 +59,11 @@ export default function Home() {
         />
       </Head>
       {/* TODO: Header*/}
-      <Header />
+      <Header
+        socials={socials}
+        email={email}
+        socialRef={socialRef}
+      />
       {/* TODO: Hero*/}
       <section
         id='hero'
