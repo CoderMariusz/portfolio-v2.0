@@ -1,7 +1,11 @@
 import { PhoneIcon, MapPinIcon, EnvelopeIcon } from '@heroicons/react/24/solid';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import Modal from './Modal';
 
 export default function Contact() {
+  const [modal, setModal] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -9,7 +13,6 @@ export default function Contact() {
     formState: { errors }
   } = useForm();
   const onSubmit = async (formData) => {
-    console.log(formData);
     const res = await fetch(
       'https://formsubmit.co/ea168d8fa9cc6f351f5623bdd8e905b5',
       {
@@ -27,7 +30,7 @@ export default function Contact() {
         })
       }
     );
-    console.log(res);
+    setModal(true);
   };
 
   return (
@@ -108,6 +111,10 @@ export default function Contact() {
           </form>
         </div>
       </div>
+      <Modal
+        isOpen={modal}
+        setModal={setModal}
+      />
     </div>
   );
 }

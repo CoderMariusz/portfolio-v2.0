@@ -32,6 +32,7 @@ export default defineType({
       name: 'profileImage',
       title: 'Profile Image',
       type: 'image',
+      
       options: {
         hotspot: true
       }

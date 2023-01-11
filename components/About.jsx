@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 
-function About() {
+function About({ backgroundInfo, profileImage }) {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -9,7 +9,7 @@ function About() {
       className='h-screen flex flex-col relative text-center md:text-left md:flex-row max-w-7xl justify-evenly mx-auto items-center space-y-16'>
       <h3 className='sectionTitleClass'>About</h3>
       <motion.img
-        src='/photo.jpg'
+        src='https://cdn.sanity.io/images/mfhg29ur/production/3fb0c5c402d4493e606796b79b29895da3b8ec4a-610x610.jpg'
         initial={{
           x: -330,
           opacity: 0
@@ -33,18 +33,7 @@ function About() {
           </span>{' '}
           bit About Me
         </h4>
-        <p className='text-base p-3'>
-          I'm a self-taught Frontend Developer from Poland. I'm passionate about
-          creating websites and web applications that provide intuitive,
-          pixel-perfect user interfaces with efficient and modern backends. I'm
-          currently looking for a Frontend Developer position. I'm a fast
-          learner, hard worker and team player. I'm also open to remote work.
-          I'm a big fan of React.js and Next.js. I'm also interested in learning
-          more about React Native. I love to create beautiful and responsive
-          websites. I'm also interested about backend technologies like Node.js
-          and Express.js. Looking forward to have challenging and interesting
-          projects and work with a great team.
-        </p>
+        <p className='text-base p-3'>{backgroundInfo}</p>
       </div>
     </motion.div>
   );

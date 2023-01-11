@@ -4,7 +4,7 @@ import React from 'react';
 import { Cursor, useTypewriter } from 'react-simple-typewriter';
 import BackGroundCircle from './BackGroundCircle';
 
-function Hero() {
+function Hero({ backgroundInfo }) {
   const [text, count] = useTypewriter({
     words: [
       `Hello, I'm Mariusz Junior Frontend Developer`,

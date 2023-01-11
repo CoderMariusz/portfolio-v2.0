@@ -24,7 +24,6 @@ function Header({ socials, email, socialRef }) {
         {socials?.map((social) =>
           socialRef.map((e) => {
             if (e.id === social._ref) {
-              console.log(e);
               return (
                 <SocialIcon
                   key={e.rev}
@@ -32,6 +31,7 @@ function Header({ socials, email, socialRef }) {
                   name={e.name}
                   fgColor='gray'
                   bgColor='transparent'
+                  className='cursor-pointer hover:bg-yellow-500 transition-all ease-in-out duration-500 rounded-xl mr-4'
                 />
               );
             }
@@ -53,7 +53,7 @@ function Header({ socials, email, socialRef }) {
           duration: 1,
           delay: 1
         }}
-        className='cursor-pointer'>
+        className='cursor-pointer px-2'>
         <SocialIcon
           network='email'
           url={sendEmail}

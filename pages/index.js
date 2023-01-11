@@ -18,6 +18,17 @@ export const pageInfoQuery = groq`  *[_type == 'pageInfo']{
 export const socialQuery = groq`  *[_type == 'social']{
 ...,
 }`;
+export const projectQuery = groq`  *[_type == 'project']{
+  _id,
+  name,
+  "image": projectImage.asset->url,
+  url,
+  "description": projectDescription,
+  }`;
+export const skillsQuery = groq`  *[_type == 'skill']{
+    name,
+    "image": skillImage.asset->url,
+    }`;
 
 export const getStaticProps = async ({ preview = false }) => {
   if (preview) {
@@ -26,15 +37,22 @@ export const getStaticProps = async ({ preview = false }) => {
 
   const pageInfo = await client.fetch(pageInfoQuery);
   const socialRef = await client.fetch(socialQuery);
+  const projectRef = await client.fetch(projectQuery);
+  const skillsRef = await client.fetch(skillsQuery);
 
-  return { props: { preview, pageInfo, socialRef } };
+  return { props: { preview, pageInfo, socialRef, projectRef, skillsRef } };
 };
 
-export default function Home({ preview, pageInfo, socialRef }) {
+export default function Home({
+  preview,
+  pageInfo,
+  socialRef,
+  projectRef,
+  skillsRef
+}) {
   if (preview) {
     return <div>Preview Mode</div>;
   }
-  console.log(socialRef);
   const {
     email,
     address,
@@ -43,7 +61,8 @@ export default function Home({ preview, pageInfo, socialRef }) {
     role,
     heroImage,
     phone,
-    socials
+    socials,
+    backgroundInfo
   } = pageInfo[0];
   return (
     <div className='h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbar scrollbar-track-zinc-700/40 scrollbar-thumb-yellow-700/80 '>
@@ -74,7 +93,10 @@ export default function Home({ preview, pageInfo, socialRef }) {
       <section
         id='about'
         className='snap-center'>
-        <About />
+        <About
+          backgroundInfo={backgroundInfo}
+          profileImage={profileImage}
+        />
       </section>
       {/* TODO: Experience*/}
       <section
@@ -92,7 +114,7 @@ export default function Home({ preview, pageInfo, socialRef }) {
       <section
         id='projects'
         className='snap-center'>
-        <Projects />
+        <Projects projects={projectRef} />
       </section>
       {/* TODO: Contact Me*/}
       <section

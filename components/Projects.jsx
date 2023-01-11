@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 
-export default function Projects() {
-  const projects = [1, 2, 3, 4, 5];
+export default function Projects({ projects }) {
   return (
     <div className='h-screen flex relative flex-col text-left md:flex-row max-w-full px-10 justify-evenly mx-auto items-center'>
       <h3 className='sectionTitleClass'>Projects</h3>
@@ -9,7 +8,7 @@ export default function Projects() {
       <div className='relative pt-24 h-full w-full flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-20 scrollbar scrollbar-thin scrollbar-track-zinc-700/40 scrollbar-thumb-yellow-700/80'>
         {projects.map((project, i) => (
           <div
-            key={project}
+            key={project._id}
             className='snap-center  w-full flex-shrink-0  space-y-5 flex items-center justify-center flex-col p-10'>
             <motion.img
               initial={{
@@ -24,9 +23,9 @@ export default function Projects() {
                 opacity: 1
               }}
               viewport={{ once: true }}
-              src='/project.png'
+              src={project.image}
               alt='coder'
-              className='w-[500px] h-fit object-contain'
+              className='w-[500px] h-fit max-h-72 object-contain'
             />
             <div className='space-y-10 px-0 md:px-10'>
               <h4 className='text-3xl font-semibold text-center'>
@@ -34,13 +33,9 @@ export default function Projects() {
                   Project: {i + 1} of {projects.length}
                 </span>
                 {` `}
-                Project Name
+                {project.name}
               </h4>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Quisquam voluptate, quod, quia, voluptates quae voluptatibus
-                quibusdam
-              </p>
+              <p>{project.description}</p>
             </div>
           </div>
         ))}
