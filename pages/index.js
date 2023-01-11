@@ -90,7 +90,7 @@ export default function Home({
     backgroundInfo
   } = pageInfo[0];
   return (
-    <div className='h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbar scrollbar-track-zinc-700/40 scrollbar-thumb-yellow-700/80 '>
+    <div className='h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbar scrollbar-track-zinc-700/40 scrollbar-thumb-yellow-700/80 scrollbar-thin '>
       <Head>
         <title>Mariusz Portfolio v2</title>
         <meta
