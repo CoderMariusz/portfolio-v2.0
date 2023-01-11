@@ -1,4 +1,4 @@
-import { PhoneIcon, MapPinIcon, EnvelopeIcon } from '@heroicons/react/24/solid';
+import { PhoneIcon, EnvelopeIcon } from '@heroicons/react/24/solid';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Modal from './Modal';
@@ -52,10 +52,7 @@ export default function Contact() {
             <EnvelopeIcon className='text-yellow-700 h-7 w-7 animate-pulse' />
             <p>coder.mariusz@gmail.com</p>
           </div>
-          <div className='flex items-center space-x-5 justify-center'>
-            <MapPinIcon className='text-yellow-700 h-7 w-7 animate-pulse' />
-            <p>87 park green</p>
-          </div>
+
           <form
             onSubmit={handleSubmit(onSubmit)}
             className='flex flex-col space-y-3 w-full'>

@@ -30,6 +30,20 @@ export const skillsQuery = groq`  *[_type == 'skill']{
     "image": skillImage.asset->url,
     }`;
 
+export const experienceQuery = groq`  *[_type == 'experience']{
+      _id,
+      jobTitle,
+      companyName,
+      dateStarted,
+      dateEnded,
+      jobDescription,
+      "techStack": techStack[]->{
+        name,
+        "image": techStackImage.asset->url,
+      },
+      points,
+      }`;
+
 export const getStaticProps = async ({ preview = false }) => {
   if (preview) {
     return { props: { preview } };
@@ -39,8 +53,18 @@ export const getStaticProps = async ({ preview = false }) => {
   const socialRef = await client.fetch(socialQuery);
   const projectRef = await client.fetch(projectQuery);
   const skillsRef = await client.fetch(skillsQuery);
+  const experienceRef = await client.fetch(experienceQuery);
 
-  return { props: { preview, pageInfo, socialRef, projectRef, skillsRef } };
+  return {
+    props: {
+      preview,
+      pageInfo,
+      socialRef,
+      projectRef,
+      skillsRef,
+      experienceRef
+    }
+  };
 };
 
 export default function Home({
@@ -48,7 +72,8 @@ export default function Home({
   pageInfo,
   socialRef,
   projectRef,
-  skillsRef
+  skillsRef,
+  experienceRef
 }) {
   if (preview) {
     return <div>Preview Mode</div>;
@@ -102,7 +127,7 @@ export default function Home({
       <section
         id='experience'
         className='snap-center'>
-        <Experience />
+        <Experience experience={experienceRef} />
       </section>
       {/* TODO: Skills*/}
       <section
